@@ -242,7 +242,7 @@ autoplay = "default"
 [node name="Blob" type="AnimatedSprite2D" parent="Control" unique_id=1961209673]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_ec0vy")
-animation = &"Level3"
+animation = &"Level1"
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

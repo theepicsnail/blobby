@@ -3,6 +3,7 @@ signal on_blob_clicked(blob:Blob)
 signal on_blob_explode(blob:Blob)
 signal generate_board()
 signal spawn_particle(source:Blob, destination:Blob)
+signal board_stable()
 
 var queue:Array[Callable] = []
 
@@ -27,11 +28,17 @@ func explodeBlob(blob:Blob):
 
 func _process(delta: float) -> void:
 	var todo = queue.size()
-	if todo:
-		if GameState.gameSpeed == GameState.GameSpeedEnum.INSTANT:
-			while queue.size() > 0:
-				queue.pop_front().call()
-		else:
+	if not todo:
+		return
+		
+	if GameState.gameSpeed == GameState.GameSpeedEnum.INSTANT:
+		while queue.size() > 0:
 			queue.pop_front().call()
+	else:
+		queue.pop_front().call()
+		
+	if queue.size() == 0:
+		board_stable.emit()
+		
 	
 	

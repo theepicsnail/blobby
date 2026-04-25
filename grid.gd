@@ -1,6 +1,6 @@
 extends Control
 
-
+var particles = 0
 func generate_board():
 	for child in %GridContainer.get_children():
 		child.queue_free()
@@ -27,13 +27,18 @@ func generate_board():
 func spawn_particle(source:Blob, destination:Blob):
 	const BLOB_SPLASH = preload("uid://cwt83ktbu4bq2")
 	var particle:BlobSplash = BLOB_SPLASH.instantiate()
+	particles += 1
 	particle.setup_splash(
 		source.get_splash_pos(),
 		destination.get_splash_pos(),
-		destination.grow_blob
+		particle_died.bind(destination)
 	)
 	%GridContainer.add_child(particle)
-
+	
+func particle_died(destination:Blob):
+	EventQueue.queue.push_back(destination.grow_blob)
+	particles -= 1
+	
 
 func _ready() -> void:
 	EventQueue.generate_board.connect(generate_board)

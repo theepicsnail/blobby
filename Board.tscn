@@ -28,10 +28,10 @@ alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer" unique_id=771507585]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/MarginContainer" unique_id=931109937]
 layout_mode = 2
@@ -142,6 +142,98 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer" unique_id=156106928]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/MarginContainer2" unique_id=122374407]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1590517078]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Rules:"
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=499724637]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Blobs have 4 sizes
+
+Grow a blob by clicking
+
+Red blobs explode and grow their neighbors
+
+"
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1013299409]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "To Win:"
+
+[node name="Label4" type="Label" parent="CanvasLayer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=12165379]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Remove all red blobs!"
+autowrap_mode = 2
+
+[node name="YouWin" type="Control" parent="CanvasLayer" unique_id=925680267]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/YouWin" unique_id=592284864]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.0
+offset_top = -175.0
+offset_right = 278.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[color=#FF0000]Y[/color][color=#FFBF00]o[/color][color=#7FFF00]u[/color] [color=#00FEFF]W[/color][color=#003FFF]i[/color][color=#7F00FF]n[/color][color=#FF00BF]![/color]"
+fit_content = true
+
+[node name="Button" type="Button" parent="CanvasLayer/YouWin" unique_id=1063827283]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -19.0
+offset_right = 195.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "Yeah, I'm awesome at the video game"
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=236585146]
 stream = ExtResource("3_otxgx")
 
@@ -149,3 +241,4 @@ stream = ExtResource("3_otxgx")
 [connection signal="value_changed" from="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer/SizeSelector" to="." method="_on_size_selector_value_changed"]
 [connection signal="item_selected" from="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer/SpeedSelector" to="." method="_on_speed_selector_item_selected"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_max_all_pressed"]
+[connection signal="pressed" from="CanvasLayer/YouWin/Button" to="." method="_win_button_pressed"]

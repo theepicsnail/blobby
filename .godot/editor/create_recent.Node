@@ -1,0 +1,15 @@
+Button
+CheckBox
+AudioStreamPlayer2D
+HSeparator
+OptionButton
+MenuButton
+SpinBox
+MarginContainer
+CenterContainer
+HBoxContainer
+Label
+VBoxContainer
+Control
+Node2D
+PanelContainer

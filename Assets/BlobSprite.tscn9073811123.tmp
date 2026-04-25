@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://c151m8b8oqoej"]
+
+[ext_resource type="Texture2D" uid="uid://efar6xv6qols" path="res://Assets/Blob0.tres" id="1_8ns51"]
+[ext_resource type="Script" uid="uid://b6oja36p0k8bl" path="res://Assets/blob.gd" id="1_chq5u"]
+[ext_resource type="Texture2D" uid="uid://3v05qt5q3465" path="res://Assets/Blob1.tres" id="2_chq5u"]
+[ext_resource type="Texture2D" uid="uid://cdxre14ix1da3" path="res://Assets/Blob2.tres" id="3_eyktc"]
+[ext_resource type="Texture2D" uid="uid://dm7vcoj5u5n2x" path="res://Assets/Blob3.tres" id="4_eqaq2"]
+[ext_resource type="Texture2D" uid="uid://cx1eeutl72pqi" path="res://Assets/CursorAdd.tres" id="6_eqaq2"]
+[ext_resource type="Texture2D" uid="uid://6siafa672lmw" path="res://Assets/CursorExplode.tres" id="7_07nb0"]
+[ext_resource type="Texture2D" uid="uid://dwv1dr341dos8" path="res://Assets/Assets.png" id="8_07nb0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec0vy"]
+atlas = ExtResource("6_eqaq2")
+region = Rect2(0, 0, 137, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl8uo"]
+atlas = ExtResource("7_07nb0")
+region = Rect2(0, 0, 255, 221)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edrdf"]
+atlas = ExtResource("8_07nb0")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edrdf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec0vy")
+}],
+"loop": true,
+"name": &"Add",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl8uo")
+}],
+"loop": true,
+"name": &"Explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edrdf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07nb0"]
+atlas = ExtResource("1_8ns51")
+region = Rect2(0, 0, 35, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfwnn"]
+atlas = ExtResource("2_chq5u")
+region = Rect2(0, 0, 35, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgd10"]
+atlas = ExtResource("3_eyktc")
+region = Rect2(0, 0, 69, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usqf2"]
+atlas = ExtResource("4_eqaq2")
+region = Rect2(0, 0, 103, 99)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ec0vy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07nb0")
+}],
+"loop": true,
+"name": &"Level0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfwnn")
+}],
+"loop": true,
+"name": &"Level1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgd10")
+}],
+"loop": true,
+"name": &"Level2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usqf2")
+}],
+"loop": true,
+"name": &"Level3",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Control" unique_id=1031985013]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_chq5u")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="." unique_id=1341388720]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="." unique_id=1491419954]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cursor" type="AnimatedSprite2D" parent="Control" unique_id=508269784]
+unique_name_in_owner = true
+visible = false
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_edrdf")
+autoplay = "default"
+
+[node name="Blob" type="AnimatedSprite2D" parent="Control" unique_id=1961209673]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_ec0vy")
+animation = &"Level3"
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

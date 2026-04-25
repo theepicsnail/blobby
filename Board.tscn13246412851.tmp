@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://bqoun6w86eb6m"]
+
+[ext_resource type="Script" uid="uid://dpq3ha7mu8utv" path="res://main.gd" id="1_3ng4l"]
+[ext_resource type="PackedScene" uid="uid://bdm1x8fplu80q" path="res://Grid.tscn" id="1_nd4as"]
+
+[node name="Node2D" type="Node2D" unique_id=209033318]
+script = ExtResource("1_3ng4l")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=36033627]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1828337163]
+z_index = -10
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.07421024, 0.26012105, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=832183954]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer" unique_id=771507585]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/MarginContainer" unique_id=931109937]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=94513774]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "Moves:"
+
+[node name="MoveCount" type="Label" parent="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=2071425656]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=759893342]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=749756259]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "Seed:"
+
+[node name="SeedSelector" type="SpinBox" parent="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=964897353]
+unique_name_in_owner = true
+layout_mode = 2
+rounded = true
+allow_greater = true
+allow_lesser = true
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=892024440]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=630018713]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "Game Speed"
+
+[node name="SpeedSelector" type="OptionButton" parent="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1679713279]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Fast"
+popup/item_1/id = 1
+popup/item_2/text = "Instant"
+popup/item_2/id = 2
+
+[node name="HSeparator3" type="HSeparator" parent="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1737546352]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HBoxContainer" unique_id=1598573314]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/CenterContainer" unique_id=634964030]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Grid" parent="CanvasLayer/HBoxContainer/CenterContainer/MarginContainer" unique_id=637405697 instance=ExtResource("1_nd4as")]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[connection signal="value_changed" from="CanvasLayer/HBoxContainer/MarginContainer/VBoxContainer/SeedSelector" to="." method="_on_seed_selector_value_changed"]

@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cwt83ktbu4bq2"]
+
+[ext_resource type="Script" uid="uid://h7l58s6ofe7y" path="res://blob_splash.gd" id="1_vynil"]
+[ext_resource type="Texture2D" uid="uid://dwv1dr341dos8" path="res://Assets/Assets.png" id="2_akdk4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vynil"]
+atlas = ExtResource("2_akdk4")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akdk4"]
+atlas = ExtResource("2_akdk4")
+region = Rect2(128, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5hl1"]
+atlas = ExtResource("2_akdk4")
+region = Rect2(256, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jn3c"]
+atlas = ExtResource("2_akdk4")
+region = Rect2(384, 512, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ec0vy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vynil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akdk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5hl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jn3c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Blob" type="Control" unique_id=1031985013]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_vynil")
+
+[node name="Blob" type="AnimatedSprite2D" parent="." unique_id=1961209673]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_ec0vy")
+autoplay = "default"
+frame_progress = 0.520234
